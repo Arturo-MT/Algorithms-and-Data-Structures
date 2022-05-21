@@ -6,24 +6,24 @@ const arr = [
   80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98,
   99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114,
   115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129,
-  130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144,
-];
+  130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144
+]
 
 const binarySearch = (arr, target) => {
-  let start = 0;
-  let end = arr.length - 1;
+  let start = 0
+  let end = arr.length - 1
   while (start <= end) {
-    let middle = Math.floor((start + end) / 2);
+    const middle = Math.floor((start + end) / 2)
     if (arr[middle] === target) {
-      return middle;
+      return middle
     }
     if (arr[middle] < target) {
-      start = middle + 1;
+      start = middle + 1
     } else {
-      end = middle - 1;
+      end = middle - 1
     }
   }
-  return -1;
-};
+  return -1
+}
 
-console.log(binarySearch(arr, 94));
+console.log(binarySearch(arr, 94))
