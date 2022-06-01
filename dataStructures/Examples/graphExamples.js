@@ -1,7 +1,7 @@
-const Graph = require("../myGraph");
-const Stack = require("../myStack");
+const Graph = require('../myGraph')
+const Stack = require('../myStack')
 
-let graph = new Graph();
+const graph = new Graph()
 /* let myVertices = ["A", "B", "C", "D", "E", "F", "G", "H", "I"];
 
 for (let i = 0; i < myVertices.length; i++) {
@@ -47,24 +47,24 @@ for (var i = 1; i < myVertices.length; i++) {
   }
   console.log(s);
 } */
-let otherGraph = [
+const otherGraph = [
   [0, 2, 4, 0, 0, 0],
   [0, 0, 1, 4, 2, 0],
   [0, 0, 0, 0, 3, 0],
   [0, 0, 0, 0, 0, 2],
   [0, 0, 0, 3, 0, 2],
-  [0, 0, 0, 0, 0, 0],
-];
-let anotherGraph = [
+  [0, 0, 0, 0, 0, 0]
+]
+const anotherGraph = [
   [0, 2, 4, 0, 0, 0],
   [2, 0, 2, 4, 2, 0],
   [4, 2, 0, 0, 3, 0],
   [0, 4, 0, 0, 3, 2],
   [0, 2, 3, 3, 0, 2],
-  [0, 0, 0, 2, 2, 0],
-];
+  [0, 0, 0, 2, 2, 0]
+]
 
-console.log(graph.dijkstra(0, otherGraph));
-console.log(graph.floydWarshall(otherGraph));
+console.log(graph.dijkstra(0, otherGraph))
+console.log(graph.floydWarshall(otherGraph))
 
 console.log(graph.prim(anotherGraph))

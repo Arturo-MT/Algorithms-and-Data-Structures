@@ -1,268 +1,268 @@
-function LinkedList() {
-  let Node = function (element) {
-    this.element = element;
-    this.next = null;
-  };
-  let length = 0;
-  let head = null;
+function LinkedList () {
+  const Node = function (element) {
+    this.element = element
+    this.next = null
+  }
+  let length = 0
+  let head = null
   this.append = function (element) {
-    let node = new Node(element),
-      current;
+    const node = new Node(element)
+    let current
     if (head === null) {
-      head = node;
+      head = node
     } else {
-      current = head;
+      current = head
 
       while (current.next) {
-        current = current.next;
+        current = current.next
       }
-      current.next = node;
+      current.next = node
     }
-    length++;
-  };
+    length++
+  }
   this.insert = function (position, element) {
     if (position >= 0 && position <= length) {
-      let node = new Node(element),
-        current = head,
-        previous,
-        index = 0;
-      if (position == 0) {
-        node.next = current;
-        head = node;
+      const node = new Node(element)
+      let current = head
+      let previous
+      let index = 0
+      if (position === 0) {
+        node.next = current
+        head = node
       } else {
         while (index++ < position) {
-          previous = current;
-          current = current.next;
+          previous = current
+          current = current.next
         }
-        node.next = current;
-        previous.next = node;
+        node.next = current
+        previous.next = node
       }
-      length++;
-      return true;
+      length++
+      return true
     } else {
-      return false;
+      return false
     }
-  };
+  }
   this.removeAt = function (position) {
     if (position > -1 && position < length) {
-      let current = head,
-        previous,
-        index = 0;
+      let current = head
+      let previous
+      let index = 0
       if (position === 0) {
-        head = current.next;
+        head = current.next
       } else {
         while (index++ < position) {
-          previous = current;
-          current = current.next;
+          previous = current
+          current = current.next
         }
-        previous.next = current.next;
+        previous.next = current.next
       }
-      length--;
-      return current.element;
+      length--
+      return current.element
     } else {
-      return null;
+      return null
     }
-  };
+  }
   this.remove = function (element) {
-    let index = this.indexOf(element);
-    return this.removeAt(index);
-  };
+    const index = this.indexOf(element)
+    return this.removeAt(index)
+  }
   this.indexOf = function (element) {
-    let current = head,
-      index = 0;
+    let current = head
+    let index = 0
     while (current) {
       if (element === current.element) {
-        return index;
+        return index
       }
-      index++;
-      current = current.next;
+      index++
+      current = current.next
     }
-    return -1;
-  };
+    return -1
+  }
   this.isEmpty = function () {
-    return length === 0;
-  };
+    return length === 0
+  }
   this.size = function () {
-    return length;
-  };
+    return length
+  }
   this.toString = function () {
-    let current = head,
-      string = "";
+    let current = head
+    let string = ''
     while (current) {
-      string += current.element + (current.next ? "n" : "");
-      current = current.next;
+      string += current.element + (current.next ? 'n' : '')
+      current = current.next
     }
-    return string;
-  };
+    return string
+  }
   this.getElement = function (position) {
     if (position > -1 && position < length) {
-      let current = head,
-        index = 0;
+      let current = head
+      let index = 0
       if (position === 0) {
-        head = current.next;
-        return head;
+        head = current.next
+        return head
       } else {
         while (index++ < position) {
-          current = current.next;
+          current = current.next
         }
-        return current;
+        return current
       }
     }
-  };
+  }
   this.getHead = function () {
-    return head;
-  };
+    return head
+  }
 }
 
-function DoublyLinkedList() {
-  let Node = function (element) {
-    this.element = element;
-    this.next = null;
-    this.prev = null;
-  };
-  let length = 0;
-  let head = null;
-  let tail = null;
+function DoublyLinkedList () {
+  const Node = function (element) {
+    this.element = element
+    this.next = null
+    this.prev = null
+  }
+  let length = 0
+  let head = null
+  let tail = null
 
   this.append = function (element) {
-    let node = new Node(element),
-      current;
+    const node = new Node(element)
+    let current
     if (!head) {
-      head = node;
-      tail = node;
+      head = node
+      tail = node
     } else {
-      current = head;
+      current = head
       while (current.next) {
-        current.prev = current;
-        current = current.next;
+        current.prev = current
+        current = current.next
       }
-      current.next = node;
-      node.prev = current;
-      tail = node;
+      current.next = node
+      node.prev = current
+      tail = node
     }
-    length++;
-  };
+    length++
+  }
   this.insert = function (position, element) {
     if (position >= 0 && position <= length) {
-      let node = new Node(element),
-        current = head,
-        previous,
-        index = 0;
+      const node = new Node(element)
+      let current = head
+      let previous
+      let index = 0
 
       if (position === 0) {
         if (!head) {
-          head = node;
-          tail = node;
+          head = node
+          tail = node
         } else {
-          node.next = current;
-          current.prev = node;
-          head = node;
+          node.next = current
+          current.prev = node
+          head = node
         }
       } else if (position === length) {
-        current = tail;
-        node.prev = current;
-        current.next = node;
-        tail = node;
+        current = tail
+        node.prev = current
+        current.next = node
+        tail = node
       } else {
         while (index++ < position) {
-          previous = current;
-          current = current.next;
+          previous = current
+          current = current.next
         }
-        node.next = current;
-        previous.next = node;
+        node.next = current
+        previous.next = node
 
-        current.prev = node;
-        node.prev = previous;
+        current.prev = node
+        node.prev = previous
       }
-      length++;
-      return true;
+      length++
+      return true
     } else {
-      return false;
+      return false
     }
-  };
+  }
   this.removeAt = function (position) {
     if (position > -1 && position < length) {
-      let current = head,
-        previous,
-        index = 0;
+      let current = head
+      let previous
+      let index = 0
       if (position === 0) {
-        head = current.next;
+        head = current.next
         if (length === 1) {
-          tail = null;
+          tail = null
         } else {
-          head.prev = null;
+          head.prev = null
         }
       } else if (position === length - 1) {
-        current = tail;
-        tail = current.prev;
-        tail.next = null;
+        current = tail
+        tail = current.prev
+        tail.next = null
       } else {
         while (index++ < position) {
-          previous = current;
-          current = current.next;
+          previous = current
+          current = current.next
         }
-        previous.next = current.next;
-        current.next.prev = previous;
+        previous.next = current.next
+        current.next.prev = previous
       }
-      length--;
-      return current.element;
+      length--
+      return current.element
     } else {
-      return null;
+      return null
     }
-  };
+  }
   this.remove = function (element) {
-    let index = this.indexOf(element);
-    return this.removeAt(index);
-  };
+    const index = this.indexOf(element)
+    return this.removeAt(index)
+  }
   this.indexOf = function (element) {
-    let current = head,
-      index = 0;
+    let current = head
+    let index = 0
     while (current) {
       if (element === current.element) {
-        return index;
+        return index
       }
-      index++;
-      current = current.next;
+      index++
+      current = current.next
     }
-    return -1;
-  };
+    return -1
+  }
   this.isEmpty = function () {
-    return length === 0;
-  };
+    return length === 0
+  }
   this.size = function () {
-    return length;
-  };
+    return length
+  }
   this.toString = function () {
-    let current = head,
-      string = "";
+    let current = head
+    let string = ''
     while (current) {
-      string += current.element + (current.next ? "n" : "");
-      current.prev = current;
-      current = current.next;
+      string += current.element + (current.next ? 'n' : '')
+      current.prev = current
+      current = current.next
     }
-    return string;
-  };
+    return string
+  }
   this.getElement = function (position) {
     if (position > -1 && position < length) {
-      let current = head,
-        index = 0;
+      let current = head
+      let index = 0
       if (position === 0) {
-        return head;
+        return head
       } else {
         while (index++ < position) {
-          previous = current;
-          current = current.next;
+          previous = current
+          current = current.next
         }
-        return current;
+        return current
       }
     }
-  };
+  }
   this.getHead = function () {
-    return head;
-  };
+    return head
+  }
   this.getTail = function () {
-    return tail;
-  };
+    return tail
+  }
 }
 
-module.exports = { LinkedList, DoublyLinkedList };
+module.exports = { LinkedList, DoublyLinkedList }

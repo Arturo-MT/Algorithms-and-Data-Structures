@@ -24,9 +24,12 @@ const fiboWithMemo = (n, memo = []) => {
   if (n < 2) {
     return 1
   }
+  /* It's checking if the result of the recursive call has already been
+  calculated. If it has, it returns the result, otherwise it calculates it. */
   if (memo[n]) {
     return memo[n]
   }
+  /* Storing the result of the recursive calls in the memo array. */
   memo[n] = fiboWithMemo(n - 1, memo) + fiboWithMemo(n - 2, memo)
   return memo[n]
 }

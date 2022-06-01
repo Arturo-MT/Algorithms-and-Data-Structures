@@ -1,100 +1,101 @@
-function Set() {
-  let items = {};
-  this.has = (value) => items.hasOwnProperty(value);
+/* eslint-disable no-prototype-builtins */
+function Set () {
+  let items = {}
+  this.has = (value) => items.hasOwnProperty(value)
   // Also can be: return value in items;
   this.add = (value) => {
     if (!this.has(value)) {
-      items[value] = value;
-      return true;
+      items[value] = value
+      return true
     }
-    return false;
-  };
+    return false
+  }
   this.delete = (value) => {
     if (this.has(value)) {
-      delete items[value];
-      return true;
+      delete items[value]
+      return true
     }
-    return false;
-  };
+    return false
+  }
   this.clear = () => {
-    items = {};
-  };
-  this.size = () => Object.keys(items).length;
+    items = {}
+  }
+  this.size = () => Object.keys(items).length
   this.sizeLegacy = () => {
-    let count = 0;
-    for (let key in items) {
-      if (items.hasOwnProperty(key)) ++count;
+    let count = 0
+    for (const key in items) {
+      if (items.hasOwnProperty(key)) ++count
     }
-    return count;
-  };
+    return count
+  }
   this.values = () => {
-    let values = [];
+    const values = []
     for (let i = 0, keys = Object.keys(items); i < keys.length; i++) {
-      values.push(items[keys[i]]);
+      values.push(items[keys[i]])
     }
-    return values;
-  };
+    return values
+  }
   this.valuesLegacy = () => {
-    let values = [];
-    for (let key in items) {
+    const values = []
+    for (const key in items) {
       if (items.hasOwnProperty(key)) {
-        values.push(items[key]);
+        values.push(items[key])
       }
     }
-    return values;
-  };
-  //Set Union AuB
+    return values
+  }
+  // Set Union AuB
   this.union = (otherSet) => {
-    let unionSet = new Set();
+    const unionSet = new Set()
 
-    let values = this.values();
+    let values = this.values()
     for (let i = 0; i < values.length; i++) {
-      unionSet.add(values[i]);
+      unionSet.add(values[i])
     }
-    values = otherSet.values();
+    values = otherSet.values()
     for (let i = 0; i < values.length; i++) {
-      unionSet.add(values[i]);
+      unionSet.add(values[i])
     }
-    return unionSet;
-  };
-  //Set Intersection AnB
+    return unionSet
+  }
+  // Set Intersection AnB
   this.intersection = (otherSet) => {
-    let intersectionSet = new Set();
+    const intersectionSet = new Set()
 
-    let values = this.values();
+    const values = this.values()
     for (let i = 0; i < values.length; i++) {
       if (otherSet.has(values[i])) {
-        intersectionSet.add(values[i]);
+        intersectionSet.add(values[i])
       }
     }
-    return intersectionSet;
-  };
-  //Set Difference A-B
+    return intersectionSet
+  }
+  // Set Difference A-B
   this.difference = (otherSet) => {
-    let differenceSet = new Set();
+    const differenceSet = new Set()
 
-    let values = this.values();
+    const values = this.values()
     for (let i = 0; i < values.length; i++) {
       if (!otherSet.has(values[i])) {
-        differenceSet.add(values[i]);
+        differenceSet.add(values[i])
       }
     }
-    return differenceSet;
-  };
-  //Set Subset AcB
+    return differenceSet
+  }
+  // Set Subset AcB
   this.subset = (otherSet) => {
     if (this.size() > otherSet.size()) {
-      return false;
+      return false
     } else {
-      let values = this.values();
+      const values = this.values()
       for (let i = 0; i < values.length; i++) {
         if (!otherSet.has(values[i])) {
-          return false;
+          return false
         }
       }
-      return true;
+      return true
     }
-  };
+  }
 }
 
-module.exports = Set;
+module.exports = Set

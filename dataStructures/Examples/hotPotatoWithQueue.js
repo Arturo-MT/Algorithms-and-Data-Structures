@@ -1,22 +1,22 @@
-const { Queue } = require("../myQueue");
+const { Queue } = require('../myQueue')
 
-function hotPotato(nameList, num) {
-  let queue = new Queue();
+function hotPotato (nameList, num) {
+  const queue = new Queue()
   for (let i = 0; i < nameList.length; i++) {
-    queue.enqueue(nameList[i]);
+    queue.enqueue(nameList[i])
   }
-  let eliminated = "";
+  let eliminated = ''
   while (queue.size() > 1) {
     for (let i = 0; i < num; i++) {
-      queue.enqueue(queue.dequeue());
+      queue.enqueue(queue.dequeue())
     }
-    eliminated = queue.dequeue();
-    console.log(eliminated + " was eliminated from the Hot Potato Game.");
+    eliminated = queue.dequeue()
+    console.log(eliminated + ' was eliminated from the Hot Potato Game.')
   }
-  return queue.dequeue();
+  return queue.dequeue()
 }
 
-let names = ["Arturo", "Cooper", "Aika", "Bilbo", "Sanzon", "Chelin"];
-let random = Math.round(Math.random() * 100);
-let winner = hotPotato(names, random);
-console.log("The winner is " + winner);
+const names = ['Arturo', 'Cooper', 'Aika', 'Bilbo', 'Sanzon', 'Chelin']
+const random = Math.round(Math.random() * 100)
+const winner = hotPotato(names, random)
+console.log('The winner is ' + winner)
